@@ -60,7 +60,11 @@
     
         <!--BURGUER -->
     
-        <div v-if="isOpenMenu" class="burguer-menu bg-white p-12 absolute right-0 top-0 h-screen z-40 shadow-2xl">
+        <div 
+            v-if="isOpenMenu" 
+            class="burguer-menu bg-white p-12 absolute right-0 top-0 h-screen z-40 shadow-2xl" 
+            :class="isOpenMenu ? 'animate-fade-left animate-duration-300' : ''"
+        >
             <button class="close-menu" @click="closeMenu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ef4444" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
