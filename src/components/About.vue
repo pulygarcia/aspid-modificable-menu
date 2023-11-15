@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <main class="bg-red-50 py-20" id="about">
+    <main class="bg-red-50 py-20" id="us">
         <div class="container mx-auto w-11/12 md:w-full md:grid md:grid-cols-5 gap-8 md:items-center">
             <div class="flex flex-col gap-4 col-span-2">
                 <img src="/about-1.jpg" alt="" class="rounded-lg">
