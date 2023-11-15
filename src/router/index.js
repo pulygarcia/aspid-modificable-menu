@@ -17,7 +17,19 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('../views/admin/AdminLayoutView.vue')
+      component: () => import('../views/admin/AdminLayoutView.vue'),
+      children: [
+        {
+          path: '/admin/new',
+          name: 'new-item',
+          component: () => import('../views/admin/AddNewItemView.vue')
+        },
+        {
+          path: '/admin/items',
+          name: 'current-menu',
+          component: () => import('../views/admin/CurrentMenuView.vue')
+        },
+      ]
     },
   ]
 })
