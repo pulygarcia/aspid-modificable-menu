@@ -33,7 +33,7 @@
             setTimeout(() => {
                 router.push({name: 'current-menu'})
             }, 3000);
-            
+
         } catch (error) {
             console.log(error);
         }
@@ -57,8 +57,9 @@
             </div>
         </Dialog>
 
+        <Loader v-if="items.loading || items.successMessage"/>
 
-        <div class="flex justify-center">
+        <div v-else class="flex justify-center">
             <div class="mt-5 p-10 w-full 2xl:w-2/4">
                 <FormKit
                     type="form"

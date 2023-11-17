@@ -3,10 +3,17 @@
 </script>
 
 <template>
-  <div class="loader"></div>
+  <div class="loader-container">
+    <div class="loader"></div>
+  </div>
 </template>
 
 <style scoped>
+.loader-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+}
     .loader {
   width: 50px;
   height: 50px;

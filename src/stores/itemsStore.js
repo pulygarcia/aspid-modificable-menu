@@ -101,6 +101,7 @@ export const useItemsStore = defineStore('items', () => {
         deleteItem,
         categories,
         selectedCategory,
+        loading,
         successMessage,
         filteredItems,
         itemsCollection,
