@@ -1,11 +1,10 @@
 <script setup>
     import {useRouter} from 'vue-router'
-
     import {reactive} from 'vue';
-
     import useImage from '@/composables/useImage';
-
     import {useItemsStore} from '@/stores/itemsStore';
+    import {Dialog, DialogPanel, DialogTitle, DialogDescription} from '@headlessui/vue';
+    import Loader from '../../components/Loader.vue';
 
     const router = useRouter();
 
@@ -17,6 +16,7 @@
         name: '',
         image: '',
         category: '',
+        description: '',
         price: '',
     })
 
@@ -30,7 +30,10 @@
                 image: url.value
             })
 
-            router.push({name: 'current-menu'})
+            setTimeout(() => {
+                router.push({name: 'current-menu'})
+            }, 3000);
+            
         } catch (error) {
             console.log(error);
         }
@@ -39,12 +42,24 @@
 
 <template>
     <div class="mt-10 container mx-auto">
+        <h2 class="text-center text-2xl font-bold">Agregar al menú</h2>
+        <p class="text-gray-600 text-center">Aquí podrás agregar nuevos productos a la carta.</p>
 
-      <h2 class="text-center text-2xl font-bold">Agregar al menú</h2>
-      <p class="text-gray-600 text-center">Aquí podrás agregar nuevos productos a la carta.</p>
+        <Dialog :open="items.successMessage ? true : false" class="relative z-50">
+            <div class="fixed top-0 flex w-screen items-center justify-end p-2">
+            <DialogPanel class="w-full max-w-sm rounded-lg bg-green-100 p-5">
+                <DialogTitle class="text-green-600 font-bold text-2xl">Éxito</DialogTitle>
+                <DialogDescription class="text-gray-600">
+                {{items.successMessage}}
+                </DialogDescription>
+                <button @click="items.successMessage = ''" class="mt-4 py-1 px-8 bg-white rounded-lg text-green-600 hover:bg-gray-50 outline-none">Agree</button>
+            </DialogPanel>
+            </div>
+        </Dialog>
+
 
         <div class="flex justify-center">
-            <div class="mt-10 p-10 w-full 2xl:w-2/4">
+            <div class="mt-5 p-10 w-full 2xl:w-2/4">
                 <FormKit
                     type="form"
                     submit-label="Agregar producto"
@@ -56,7 +71,7 @@
                         type="text"
                         name="name"
                         label="Titulo"
-                        placeholder="Título item"
+                        placeholder="Nombre del producto"
                         validation="required"
                         :validation-messages="{required: 'El título es obligatorio'}"
                         v-model.trim="formData.name"
@@ -68,13 +83,13 @@
                         label="Imagen"
                         validation="required"
                         :validation-messages="{required: 'La imagen es obligatoria'}"
-                        accept=".jpg"
+                        accept=".jpg, .png, .JPG, .PNG"
                         @change="onFileChange"
                         v-model="formData.image"
                     />
 
                     <div v-if="imageUploaded">
-                        <p class="font-black">Imagen producto: </p>
+                        <p class="font-black">Imagen cargada: </p>
                         <img :src="url" class="w-32" alt="Nuevo producto imagen"/>
                     </div>
 
@@ -87,12 +102,20 @@
                         v-model.number="formData.category"
                         :options="items.categoryOptions"
                     />
+                    <FormKit 
+                        type="text"
+                        name="description"
+                        label="Descripción"
+                        validation="required"
+                        :validation-messages="{required: 'Por favor agregá una descripción'}"
+                        v-model="formData.description"
+                    />
 
                     <FormKit 
                         type="number"
                         name="price"
                         label="Precio"
-                        placeholder="Precio del item"
+                        placeholder="Precio del producto"
                         validation="required"
                         :validation-messages="{required: 'El precio es obligatorio'}"
                         min="1"

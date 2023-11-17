@@ -10,6 +10,9 @@ export const useItemsStore = defineStore('items', () => {
     
     const selectedCategory = ref(1);
 
+    const successMessage = ref('');
+    const loading = ref(false);
+
     const categories = [
         {id: 1, name: 'Pieza'},
         {id: 2, name: 'Combo'}
@@ -22,7 +25,21 @@ export const useItemsStore = defineStore('items', () => {
     const itemsCollection = useCollection( q );
 
     async function createItem(item){
-        await addDoc(collection(db, "items"), item)
+        loading.value = true;
+
+        try {
+            await addDoc(collection(db, "items"), item);
+
+            successMessage.value = 'El producto fué cargado correctamente';
+            setTimeout(() => {
+                successMessage.value = '';
+            }, 3000);
+
+        } catch (error) {
+            console.log(error);
+        }finally{
+            loading.value = false;
+        }
     }
 
     async function updateItem(docRef, item){
@@ -84,6 +101,7 @@ export const useItemsStore = defineStore('items', () => {
         deleteItem,
         categories,
         selectedCategory,
+        successMessage,
         filteredItems,
         itemsCollection,
         noResult,
