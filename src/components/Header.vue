@@ -47,7 +47,7 @@
         <nav class="hidden md:flex gap-2">
             <a href="#" class="px-5 py-1 rounded-lg font-semibold text-white bg-black hover:bg-gray-800">Rerservar</a>
             <a href="#" class="px-5 py-1 rounded-lg font-semibold border border-gray-300 hover:border-gray-400">Contacto</a>
-            <RouterLink :to="{name: 'admin'}" class="px-5 py-1 rounded-lg font-semibold border border-gray-300 hover:border-gray-400">Admin</RouterLink>
+            <RouterLink :to="{name: 'current-menu'}" class="px-5 py-1 rounded-lg font-semibold border border-gray-300 hover:border-gray-400">Admin</RouterLink>
         </nav>
     
         <div class="flex flex-grow justify-end basis-0 md:hidden">
