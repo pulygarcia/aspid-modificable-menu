@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/menu',
       name: 'menu',
-      component: () => import('../views/MenuLayoutView.vue')
+      component: () => import('../views/MenuView.vue')
     },
     {
       path: '/admin',
