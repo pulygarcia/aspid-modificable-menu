@@ -44,14 +44,40 @@ export const useItemsStore = defineStore('items', () => {
 
     async function updateItem(docRef, item){
         const {image, url, ...values} = item;
-
+        loading.value = true;
+        
         if(image.length){
-            await updateDoc(docRef, {
-                ...values,
-                image: url.value
-            })
+            try {
+                await updateDoc(docRef, {
+                    ...values,
+                    image: url.value
+                }) 
+                successMessage.value = 'El producto fué actualizado correctamente';
+
+                setTimeout(() => {
+                    successMessage.value = '';
+                }, 3000);
+
+            } catch (error) {
+                console.log(error);
+            }finally{
+                loading.value = false;
+            }
+
         }else{
-            await updateDoc(docRef, values)
+            try {
+                await updateDoc(docRef, values)
+                successMessage.value = 'El producto fué actualizado correctamente';
+
+                setTimeout(() => {
+                    successMessage.value = '';
+                }, 3000);
+                
+            } catch (error) {
+                console.log(error);
+            }finally{
+                loading.value = false
+            }
         }
     }
 
@@ -96,6 +122,7 @@ export const useItemsStore = defineStore('items', () => {
 
 
     return{
+        db,
         createItem,
         updateItem,
         deleteItem,

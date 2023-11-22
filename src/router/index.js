@@ -25,6 +25,11 @@ const router = createRouter({
           component: () => import('../views/admin/AddNewItemView.vue')
         },
         {
+          path: '/admin/edit/:id',
+          name: 'edit-item',
+          component: () => import('../views/admin/EditItemView.vue')
+        },
+        {
           path: '/admin/items',
           name: 'current-menu',
           component: () => import('../views/admin/CurrentMenuView.vue')
