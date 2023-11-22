@@ -40,7 +40,7 @@ export const useAuthStore = defineStore('auth', () => {
             successMessage.value = 'Session started successfully'
             setTimeout(() => {
                 successMessage.value = '';
-                router.push({name: 'new-provider'})
+                router.push({name: 'current-menu'})
             }, 3000);
 
         })
@@ -53,18 +53,21 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     const logout = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            currentUser.value = null;
-            successMessage.value = 'User session was closed';
-            setTimeout(() => {
-                successMessage.value = '';
-                router.push({name: 'login'})
-            }, 3000);
+        if(confirm('Se cerrará la sesión como administrador')){
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                currentUser.value = null;
+                successMessage.value = 'User session was closed';
+                setTimeout(() => {
+                    successMessage.value = '';
+                    router.push({name: 'login'})
+                }, 3000);
+    
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
 
-        }).catch((error) => {
-            console.log(error);
-        });
     }
     
     return{
