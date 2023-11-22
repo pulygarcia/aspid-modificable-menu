@@ -1,4 +1,5 @@
 <script setup>
+    import {useRouter} from 'vue-router'
     import {reactive} from 'vue'
     import Header from '../components/Header.vue';
     import {useAuthStore} from '../stores/authStore'
@@ -6,6 +7,7 @@
     import Loader from '../components/Loader.vue';
 
     const authStore = useAuthStore();
+    const router = useRouter();
 
     const formData = reactive({
         email: '',
@@ -15,6 +17,9 @@
     const submitHandler = (data) => {
         try {
             authStore.login(data);
+            setTimeout(() => {
+                router.push({name: 'current-menu'})
+            }, 3000);
         } catch (error) {
             console.log(error);
         }
@@ -51,8 +56,8 @@
             </div>
         </Dialog>
 
-        <h2 class="text-center text-2xl font-bold">Login</h2>
-        <p class="text-gray-600 text-center">Iniciar sesión como <span class="text-red-500">Administrador</span> para poder agregar al menú, modificar o eliminar.</p>
+        <h2 class="text-center text-2xl font-bold">Iniciar sesión</h2>
+        <p class="text-gray-600 text-center">Debes estár registrado como <span class="text-red-500">Administrador</span> para poder agregar, modificar o eliminar el menú.</p>
 
         <div class="w-11/12 md:w-6/12 mt-11 mx-auto">
             <Loader v-if="authStore.loading || authStore.successMessage"/>

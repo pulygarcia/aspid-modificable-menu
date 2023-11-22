@@ -9,7 +9,7 @@
     </div>
 
     <div class="flex gap-3 items-center justify-center mt-6 pb-4 z-10">
-        <p class="text-gray-600 text-center my-1">&copy; Make by Puly - Frontend dev.</p>
+        <p class="text-gray-600 text-center my-1">&copy; Made by Puly - Frontend dev.</p>
         <a href="https://www.instagram.com/puly___garcia/">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f87171" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
