@@ -75,13 +75,9 @@
             <nav>
                 <div class="flex items-center gap-2 mt-4">
                     <p class=" font-bold text-xl">Aspid sushi & Cuisine &copy;</p>
-                    <RouterLink :to="{name: 'current-menu'}" class="bg-red-500 rounded-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                        </svg>
-                    </RouterLink>
+                    <img src="/sushifav.svg" alt="sushi" class="w-10 object-cover mx-auto">
                 </div>
-                <ul class="flex flex-col text-right mt-8 space-y-4"> 
+                <ul class="flex flex-col text-right mt-8 space-y-6"> 
                     <a href="/#local" class="text-sm font-semibold bg-[#efefef] rounded p-1 flex items-center justify-center gap-1" @click="isOpenMenu = false">
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -110,6 +106,16 @@
                         </li>
                         <span>Nosotros</span>
                     </a>
+
+                    <RouterLink :to="{name: 'current-menu'}" class="text-sm font-semibold bg-[#efefef] rounded p-1 flex items-center justify-center gap-1" @click="isOpenMenu = false">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ef4444" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                        </li>
+
+                        <span>Admin panel</span>
+                    </RouterLink>
                 </ul>
     
                 <div class="flex gap-4 items-center justify-end mt-8">
