@@ -1,5 +1,7 @@
 # aspid-menu
 
+Open the [Deploy here](https://sushimenu-dfb1c.web.app/) to check how this project looks.
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
