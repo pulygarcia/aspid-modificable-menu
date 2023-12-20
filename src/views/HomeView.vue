@@ -5,6 +5,7 @@
   import ShortGallery from '../components/ShortGallery.vue';
   import About from '../components/About.vue';
   import Footer from '../components/Footer.vue';
+  import Local from '../components/Local.vue';
 </script>
 
 <template>
@@ -17,6 +18,8 @@
   <ShortGallery />
 
   <About />
+
+  <Local />
 
   <Footer />
 </template>
